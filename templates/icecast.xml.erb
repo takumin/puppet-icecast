@@ -1,181 +1,181 @@
 <!-- Managed Puppet -->
 
 <icecast>
-<% if @options['location'] -%>
+<% if @options['location'] != :undef -%>
 	<location><%= @options['location'] %></location>
 <% end -%>
-<% if @options['admin'] -%>
+<% if @options['admin'] != :undef -%>
 	<admin><%= @options['admin'] %></admin>
 <% end -%>
-<% if @options['limits'] -%>
+<% if @options['limits'] != :undef -%>
 	<limits>
-<%   if @options['limits']['clients'] -%>
+<%   if @options['limits']['clients'] != :undef -%>
 		<clients><%= @options['limits']['clients'] %></clients>
 <%   end -%>
-<%   if @options['limits']['sources'] -%>
+<%   if @options['limits']['sources'] != :undef -%>
 		<sources><%= @options['limits']['sources'] %></sources>
 <%   end -%>
-<%   if @options['limits']['queue-size'] -%>
+<%   if @options['limits']['queue-size'] != :undef -%>
 		<queue-size><%= @options['limits']['queue-size'] %></queue-size>
 <%   end -%>
-<%   if @options['limits']['client-timeout'] -%>
+<%   if @options['limits']['client-timeout'] != :undef -%>
 		<client-timeout><%= @options['limits']['client-timeout'] %></client-timeout>
 <%   end -%>
-<%   if @options['limits']['header-timeout'] -%>
+<%   if @options['limits']['header-timeout'] != :undef -%>
 		<header-timeout><%= @options['limits']['header-timeout'] %></header-timeout>
 <%   end -%>
-<%   if @options['limits']['source-timeout'] -%>
+<%   if @options['limits']['source-timeout'] != :undef -%>
 		<source-timeout><%= @options['limits']['source-timeout'] %></source-timeout>
 <%   end -%>
-<%   if @options['limits']['burst-on-connect'] -%>
+<%   if @options['limits']['burst-on-connect'] != :undef -%>
 		<burst-on-connect><%= @options['limits']['burst-on-connect'] %></burst-on-connect>
 <%   end -%>
-<%   if @options['limits']['burst-size'] -%>
+<%   if @options['limits']['burst-size'] != :undef -%>
 		<burst-size><%= @options['limits']['burst-size'] %></burst-size>
 <%   end -%>
 	</limits>
 <% end -%>
-<% if @options['authentication'] -%>
+<% if @options['authentication'] != :undef -%>
 	<authentication>
-<%   if @options['authentication']['source-password'] -%>
+<%   if @options['authentication']['source-password'] != :undef -%>
 		<source-password><%= @options['authentication']['source-password'] %></source-password>
 <%   end -%>
-<%   if @options['authentication']['relay-password'] -%>
+<%   if @options['authentication']['relay-password'] != :undef -%>
 		<relay-password><%= @options['authentication']['relay-password'] %></relay-password>
 <%   end -%>
-<%   if @options['authentication']['admin-user'] -%>
+<%   if @options['authentication']['admin-user'] != :undef -%>
 		<admin-user><%= @options['authentication']['admin-user'] %></admin-user>
 <%   end -%>
-<%   if @options['authentication']['admin-password'] -%>
+<%   if @options['authentication']['admin-password'] != :undef -%>
 		<admin-password><%= @options['authentication']['admin-password'] %></admin-password>
 <%   end -%>
 	</authentication>
 <% end -%>
-<% if @options['shoutcast-mount'] -%>
+<% if @options['shoutcast-mount'] != :undef -%>
 	<shoutcast-mount><%= @options['shoutcast-mount'] %></shoutcast-mount>
 <% end -%>
-<% if @options['directory'] -%>
+<% if @options['directory'] != :undef -%>
 	<directory>
-<%   if @options['directory']['yp-url-timeout'] -%>
+<%   if @options['directory']['yp-url-timeout'] != :undef -%>
 		<yp-url-timeout><%= @options['directory']['yp-url-timeout'] %></yp-url-timeout>
 <%   end -%>
-<%   if @options['directory']['yp-url'] -%>
+<%   if @options['directory']['yp-url'] != :undef -%>
 		<yp-url><%= @options['directory']['yp-url'] %></yp-url>
 <%   end -%>
 	</directory>
 <% end -%>
-<% if @options['hostname'] -%>
+<% if @options['hostname'] != :undef -%>
 	<hostname><%= @options['hostname'] %></hostname>
 <% end -%>
-<% if @options['listen-socket'] -%>
+<% if @options['listen-socket'] != :undef -%>
 <%   @options['listen-socket'].each do |val| -%>
 	<listen-socket>
-<%     if val['bind-address'] -%>
+<%     if val['bind-address'] != :undef -%>
 		<bind-address><%= val['bind-address'] %></bind-address>
 <%     end -%>
-<%     if val['port'] -%>
+<%     if val['port'] != :undef -%>
 		<port><%= val['port'] %></port>
 <%     end -%>
-<%     if val['shoutcast-mount'] -%>
+<%     if val['shoutcast-mount'] != :undef -%>
 		<shoutcast-mount><%= val['shoutcast-mount'] %></shoutcast-mount>
 <%     end -%>
-<%     if val['ssl'] -%>
+<%     if val['ssl'] != :undef -%>
 		<ssl><%= val['ssl'] %></ssl>
 <%     end -%>
 	</listen-socket>
 <%   end -%>
 <% end -%>
-<% if @options['http-headers'] -%>
+<% if @options['http-headers'] != :undef -%>
 <%   @options['http-headers'].each do |val| -%>
 	<http-headers>
-<%     if val['name'] and val['value'] -%>
+<%     if val['name'] and val['value'] != :undef -%>
 		<header name="<%= val['name'] %>" value="<%= val['value'] %>" />
 <%     end -%>
 	</http-headers>
 <%   end -%>
 <% end -%>
-<% if @options['master-server'] -%>
+<% if @options['master-server'] != :undef -%>
 	<master-server><%= @options['master-server'] %></master-server>
 <% end -%>
-<% if @options['master-server-port'] -%>
+<% if @options['master-server-port'] != :undef -%>
 	<master-server-port><%= @options['master-server-port'] %></master-server-port>
 <% end -%>
-<% if @options['master-update-interval'] -%>
+<% if @options['master-update-interval'] != :undef -%>
 	<master-update-interval><%= @options['master-update-interval'] %></master-update-interval>
 <% end -%>
-<% if @options['master-password'] -%>
+<% if @options['master-password'] != :undef -%>
 	<master-password><%= @options['master-password'] %></master-password>
 <% end -%>
-<% if @options['relays-on-demand'] -%>
+<% if @options['relays-on-demand'] != :undef -%>
 	<relays-on-demand><%= @options['relays-on-demand'] %></relays-on-demand>
 <% end -%>
 <% # <relay> -%>
 <% # <mount> -%>
-<% if @options['fileserve'] -%>
+<% if @options['fileserve'] != :undef -%>
 	<fileserve><%= @options['fileserve'] %></fileserve>
 <% end -%>
-<% if @options['paths'] -%>
+<% if @options['paths'] != :undef -%>
 	<paths>
-<%   if @options['paths']['basedir'] -%>
+<%   if @options['paths']['basedir'] != :undef -%>
 		<basedir><%= @options['paths']['basedir'] %></basedir>
 <%   end -%>
-<%   if @options['paths']['logdir'] -%>
+<%   if @options['paths']['logdir'] != :undef -%>
 		<logdir><%= @options['paths']['logdir'] %></logdir>
 <%   end -%>
-<%   if @options['paths']['webroot'] -%>
+<%   if @options['paths']['webroot'] != :undef -%>
 		<webroot><%= @options['paths']['webroot'] %></webroot>
 <%   end -%>
-<%   if @options['paths']['adminroot'] -%>
+<%   if @options['paths']['adminroot'] != :undef -%>
 		<adminroot><%= @options['paths']['adminroot'] %></adminroot>
 <%   end -%>
-<%   if @options['paths']['pidfile'] -%>
+<%   if @options['paths']['pidfile'] != :undef -%>
 		<pidfile><%= @options['paths']['pidfile'] %></pidfile>
 <%   end -%>
-<%   if @options['paths']['alias'] -%>
+<%   if @options['paths']['alias'] != :undef -%>
 <%     @options['paths']['alias'].each do |val| -%>
-<%       if val['source'] and val['destination'] -%>
+<%       if val['source'] and val['destination'] != :undef -%>
 		<alias source="<%= val['source'] %>" destination="<%= val['destination'] %>" />
 <%       end -%>
 <%     end -%>
 <%   end -%>
-<%   if @options['paths']['ssl-certificate'] -%>
+<%   if @options['paths']['ssl-certificate'] != :undef -%>
 		<ssl-certificate><%= @options['paths']['ssl-certificate'] %></ssl-certificate>
 <%   end -%>
 	</paths>
 <% end -%>
-<% if @options['logging'] -%>
+<% if @options['logging'] != :undef -%>
 	<logging>
-<%   if @options['logging']['accesslog'] -%>
+<%   if @options['logging']['accesslog'] != :undef -%>
 		<accesslog><%= @options['logging']['accesslog'] %></accesslog>
 <%   end -%>
-<%   if @options['logging']['errorlog'] -%>
+<%   if @options['logging']['errorlog'] != :undef -%>
 		<errorlog><%= @options['logging']['errorlog'] %></errorlog>
 <%   end -%>
-<%   if @options['logging']['playlistlog'] -%>
+<%   if @options['logging']['playlistlog'] != :undef -%>
 		<playlistlog><%= @options['logging']['playlistlog'] %></playlistlog>
 <%   end -%>
-<%   if @options['logging']['loglevel'] -%>
+<%   if @options['logging']['loglevel'] != :undef -%>
 		<loglevel><%= @options['logging']['loglevel'] %></loglevel>
 <%   end -%>
-<%   if @options['logging']['logsize'] -%>
+<%   if @options['logging']['logsize'] != :undef -%>
 		<logsize><%= @options['logging']['logsize'] %></logsize>
 <%   end -%>
-<%   if @options['logging']['logarchive'] -%>
+<%   if @options['logging']['logarchive'] != :undef -%>
 		<logarchive><%= @options['logging']['logarchive'] %></logarchive>
 <%   end -%>
 	</logging>
 <% end -%>
-<% if @options['security'] -%>
+<% if @options['security'] != :undef -%>
 	<security>
-<%   if @options['security']['chroot'] -%>
+<%   if @options['security']['chroot'] != :undef -%>
 		<chroot><%= @options['security']['chroot'] %></chroot>
 <%   end -%>
-<%   if @options['security']['changeowner'] -%>
+<%   if @options['security']['changeowner'] != :undef -%>
 		<changeowner>
-<%     if @options['security']['changeowner']['user'] -%>
+<%     if @options['security']['changeowner']['user'] != :undef -%>
 			<user><%= @options['security']['changeowner']['user'] %></user>
 <%     end -%>
-<%     if @options['security']['changeowner']['group'] -%>
+<%     if @options['security']['changeowner']['group'] != :undef -%>
 			<group><%= @options['security']['changeowner']['group'] %></group>
 <%     end -%>
 		</changeowner>
