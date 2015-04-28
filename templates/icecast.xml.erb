@@ -1,0 +1,185 @@
+<!-- Managed Puppet -->
+
+<icecast>
+<% if @options['location'] -%>
+	<location><%= @options['location'] %></location>
+<% end -%>
+<% if @options['admin'] -%>
+	<admin><%= @options['admin'] %></admin>
+<% end -%>
+<% if @options['limits'] -%>
+	<limits>
+<%   if @options['limits']['clients'] -%>
+		<clients><%= @options['limits']['clients'] %></clients>
+<%   end -%>
+<%   if @options['limits']['sources'] -%>
+		<sources><%= @options['limits']['sources'] %></sources>
+<%   end -%>
+<%   if @options['limits']['queue-size'] -%>
+		<queue-size><%= @options['limits']['queue-size'] %></queue-size>
+<%   end -%>
+<%   if @options['limits']['client-timeout'] -%>
+		<client-timeout><%= @options['limits']['client-timeout'] %></client-timeout>
+<%   end -%>
+<%   if @options['limits']['header-timeout'] -%>
+		<header-timeout><%= @options['limits']['header-timeout'] %></header-timeout>
+<%   end -%>
+<%   if @options['limits']['source-timeout'] -%>
+		<source-timeout><%= @options['limits']['source-timeout'] %></source-timeout>
+<%   end -%>
+<%   if @options['limits']['burst-on-connect'] -%>
+		<burst-on-connect><%= @options['limits']['burst-on-connect'] %></burst-on-connect>
+<%   end -%>
+<%   if @options['limits']['burst-size'] -%>
+		<burst-size><%= @options['limits']['burst-size'] %></burst-size>
+<%   end -%>
+	</limits>
+<% end -%>
+<% if @options['authentication'] -%>
+	<authentication>
+<%   if @options['authentication']['source-password'] -%>
+		<source-password><%= @options['authentication']['source-password'] %></source-password>
+<%   end -%>
+<%   if @options['authentication']['relay-password'] -%>
+		<relay-password><%= @options['authentication']['relay-password'] %></relay-password>
+<%   end -%>
+<%   if @options['authentication']['admin-user'] -%>
+		<admin-user><%= @options['authentication']['admin-user'] %></admin-user>
+<%   end -%>
+<%   if @options['authentication']['admin-password'] -%>
+		<admin-password><%= @options['authentication']['admin-password'] %></admin-password>
+<%   end -%>
+	</authentication>
+<% end -%>
+<% if @options['shoutcast-mount'] -%>
+	<shoutcast-mount><%= @options['shoutcast-mount'] %></shoutcast-mount>
+<% end -%>
+<% if @options['directory'] -%>
+	<directory>
+<%   if @options['directory']['yp-url-timeout'] -%>
+		<yp-url-timeout><%= @options['directory']['yp-url-timeout'] %></yp-url-timeout>
+<%   end -%>
+<%   if @options['directory']['yp-url'] -%>
+		<yp-url><%= @options['directory']['yp-url'] %></yp-url>
+<%   end -%>
+	</directory>
+<% end -%>
+<% if @options['hostname'] -%>
+	<hostname><%= @options['hostname'] %></hostname>
+<% end -%>
+<% if @options['listen-socket'] -%>
+<%   @options['listen-socket'].each do |val| -%>
+	<listen-socket>
+<%     if val['bind-address'] -%>
+		<bind-address><%= val['bind-address'] %></bind-address>
+<%     end -%>
+<%     if val['port'] -%>
+		<port><%= val['port'] %></port>
+<%     end -%>
+<%     if val['shoutcast-mount'] -%>
+		<shoutcast-mount><%= val['shoutcast-mount'] %></shoutcast-mount>
+<%     end -%>
+<%     if val['ssl'] -%>
+		<ssl><%= val['ssl'] %></ssl>
+<%     end -%>
+	</listen-socket>
+<%   end -%>
+<% end -%>
+<% if @options['http-headers'] -%>
+<%   @options['http-headers'].each do |val| -%>
+	<http-headers>
+<%     if val['name'] and val['value'] -%>
+		<header name="<%= val['name'] %>" value="<%= val['value'] %>" />
+<%     end -%>
+	</http-headers>
+<%   end -%>
+<% end -%>
+<% if @options['master-server'] -%>
+	<master-server><%= @options['master-server'] %></master-server>
+<% end -%>
+<% if @options['master-server-port'] -%>
+	<master-server-port><%= @options['master-server-port'] %></master-server-port>
+<% end -%>
+<% if @options['master-update-interval'] -%>
+	<master-update-interval><%= @options['master-update-interval'] %></master-update-interval>
+<% end -%>
+<% if @options['master-password'] -%>
+	<master-password><%= @options['master-password'] %></master-password>
+<% end -%>
+<% if @options['relays-on-demand'] -%>
+	<relays-on-demand><%= @options['relays-on-demand'] %></relays-on-demand>
+<% end -%>
+<% # <relay> -%>
+<% # <mount> -%>
+<% if @options['fileserve'] -%>
+	<fileserve><%= @options['fileserve'] %></fileserve>
+<% end -%>
+<% if @options['paths'] -%>
+	<paths>
+<%   if @options['paths']['basedir'] -%>
+		<basedir><%= @options['paths']['basedir'] %></basedir>
+<%   end -%>
+<%   if @options['paths']['logdir'] -%>
+		<logdir><%= @options['paths']['logdir'] %></logdir>
+<%   end -%>
+<%   if @options['paths']['webroot'] -%>
+		<webroot><%= @options['paths']['webroot'] %></webroot>
+<%   end -%>
+<%   if @options['paths']['adminroot'] -%>
+		<adminroot><%= @options['paths']['adminroot'] %></adminroot>
+<%   end -%>
+<%   if @options['paths']['pidfile'] -%>
+		<pidfile><%= @options['paths']['pidfile'] %></pidfile>
+<%   end -%>
+<%   if @options['paths']['alias'] -%>
+<%     @options['paths']['alias'].each do |val| -%>
+<%       if val['source'] and val['destination'] -%>
+		<alias source="<%= val['source'] %>" destination="<%= val['destination'] %>" />
+<%       end -%>
+<%     end -%>
+<%   end -%>
+<%   if @options['paths']['ssl-certificate'] -%>
+		<ssl-certificate><%= @options['paths']['ssl-certificate'] %></ssl-certificate>
+<%   end -%>
+	</paths>
+<% end -%>
+<% if @options['logging'] -%>
+	<logging>
+<%   if @options['logging']['accesslog'] -%>
+		<accesslog><%= @options['logging']['accesslog'] %></accesslog>
+<%   end -%>
+<%   if @options['logging']['errorlog'] -%>
+		<errorlog><%= @options['logging']['errorlog'] %></errorlog>
+<%   end -%>
+<%   if @options['logging']['playlistlog'] -%>
+		<playlistlog><%= @options['logging']['playlistlog'] %></playlistlog>
+<%   end -%>
+<%   if @options['logging']['loglevel'] -%>
+		<loglevel><%= @options['logging']['loglevel'] %></loglevel>
+<%   end -%>
+<%   if @options['logging']['logsize'] -%>
+		<logsize><%= @options['logging']['logsize'] %></logsize>
+<%   end -%>
+<%   if @options['logging']['logarchive'] -%>
+		<logarchive><%= @options['logging']['logarchive'] %></logarchive>
+<%   end -%>
+	</logging>
+<% end -%>
+<% if @options['security'] -%>
+	<security>
+<%   if @options['security']['chroot'] -%>
+		<chroot><%= @options['security']['chroot'] %></chroot>
+<%   end -%>
+<%   if @options['security']['changeowner'] -%>
+		<changeowner>
+<%     if @options['security']['changeowner']['user'] -%>
+			<user><%= @options['security']['changeowner']['user'] %></user>
+<%     end -%>
+<%     if @options['security']['changeowner']['group'] -%>
+			<group><%= @options['security']['changeowner']['group'] %></group>
+<%     end -%>
+		</changeowner>
+<%   end -%>
+	</security>
+<% end -%>
+</icecast>
