@@ -12,7 +12,7 @@ class icecast::params {
     }
     'FreeBSD': {
       $package_name = 'audio/icecast2'
-      $service_name = 'icecast'
+      $service_name = 'icecast2'
       $prefix       = '/usr/local'
     }
     default: {

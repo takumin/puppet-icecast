@@ -13,7 +13,7 @@ class icecast::config {
     gid     => $::icecast::options['security']['changeowner']['group'],
     comment => 'Icecast Daemon User',
     home    => '/nonexistent',
-    shell   => '/sbin/nologin',
+    shell   => '/usr/sbin/nologin',
     require => [
       Group[$::icecast::options['security']['changeowner']['group']],
     ],
