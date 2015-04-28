@@ -16,7 +16,10 @@ class icecast (
   $options         = $::icecast::params::options,
 ) inherits ::icecast::params {
 
-  # validate parameters here
+  $option = deepmerge($::icecast::params::options, $::icecast::options)
+
+  validate_string($option['security']['changeowner']['user'])
+  validate_string($option['security']['changeowner']['group'])
 
   class { '::icecast::install': } ->
   class { '::icecast::config': } ~>

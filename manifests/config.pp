@@ -4,42 +4,42 @@
 #
 class icecast::config {
 
-  group { $::icecast::options['security']['changeowner']['group']:
+  group { $::icecast::option['security']['changeowner']['group']:
     ensure  => present,
   }
 
-  user { $::icecast::options['security']['changeowner']['user']:
+  user { $::icecast::option['security']['changeowner']['user']:
     ensure  => present,
-    gid     => $::icecast::options['security']['changeowner']['group'],
+    gid     => $::icecast::option['security']['changeowner']['group'],
     comment => 'Icecast Daemon User',
     home    => '/nonexistent',
     shell   => '/usr/sbin/nologin',
     require => [
-      Group[$::icecast::options['security']['changeowner']['group']],
+      Group[$::icecast::option['security']['changeowner']['group']],
     ],
   }
 
   file { $::icecast::config:
     ensure  => file,
-    owner   => $::icecast::options['security']['changeowner']['user'],
-    group   => $::icecast::options['security']['changeowner']['group'],
+    owner   => $::icecast::option['security']['changeowner']['user'],
+    group   => $::icecast::option['security']['changeowner']['group'],
     mode    => 0400,
     content => template($::icecast::config_template),
     require => [
-      User[$::icecast::options['security']['changeowner']['user']],
+      User[$::icecast::option['security']['changeowner']['user']],
     ],
   }
 
   file {[
-    $::icecast::options['paths']['logdir'],
-    $::icecast::options['paths']['pidfile'],
+    $::icecast::option['paths']['logdir'],
+    $::icecast::option['paths']['pidfile'],
   ]:
     ensure  => directory,
-    owner   => $::icecast::options['security']['changeowner']['user'],
-    group   => $::icecast::options['security']['changeowner']['group'],
+    owner   => $::icecast::option['security']['changeowner']['user'],
+    group   => $::icecast::option['security']['changeowner']['group'],
     mode    => 0700,
     require => [
-      User[$::icecast::options['security']['changeowner']['user']],
+      User[$::icecast::option['security']['changeowner']['user']],
     ],
   }
 
